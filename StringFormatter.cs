@@ -4,7 +4,7 @@ namespace PointsBet_Backend_Online_Code_Test
 {
     public class StringFormatter
     {
-        public static string ToCommaSepatatedList(string[] items, string quote)
+        public static string ToCommaSeparatedList(string[] items, string quote)
         {
             StringBuilder qry = new StringBuilder(string.Format("{0}{1}{0}", quote, items[0]));
 
