@@ -48,17 +48,14 @@ public class StringFormatterTests
     }
 
     [Fact]
-    public void ToCommaSeparatedList_WithNullArray_ReturnsEmptyString()
+    public void ToCommaSeparatedList_WithNullArray_ThrowsArgumentNullException()
     {
         // Arrange
-        string[] items = null;
+        string[]? items = null;
         var quote = "\"";
 
-        // Act
-        var result = StringFormatter.ToCommaSeparatedList(items, quote);
-
-        // Assert
-        Assert.Equal("", result);
+        // Act & Assert
+        Assert.Throws<ArgumentNullException>(() => StringFormatter.ToCommaSeparatedList(items!, quote));
     }
 
     [Fact]
@@ -93,11 +90,11 @@ public class StringFormatterTests
     public void ToCommaSeparatedList_WithNullItems_HandlesCorrectly()
     {
         // Arrange
-        var items = new string[] { "apple", null, "banana" };
+        var items = new string?[] { "apple", null, "banana" };
         var quote = "\"";
 
         // Act
-        var result = StringFormatter.ToCommaSeparatedList(items, quote);
+        var result = StringFormatter.ToCommaSeparatedList(items!, quote);
 
         // Assert
         Assert.Equal("\"apple\", \"\", \"banana\"", result);
